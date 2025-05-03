@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | MentalMosaic</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <img src="images/logo.png" alt="MentalMosaic">
+          <span>MentalMosaic</span>
+        </div>
+        <button class="mobile-toggle" id="sidebar-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="active">
+            <a href="dashboard.html">
+              <i class="fas fa-home"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="mood-tracker.html">
+              <i class="fas fa-chart-line"></i>
+              <span>Mood Tracker</span>
+            </a>
+          </li>
+          <li>
+            <a href="journal.html">
+              <i class="fas fa-book"></i>
+              <span>Journal</span>
+            </a>
+          </li>
+          <li>
+            <a href="resources.html">
+              <i class="fas fa-lightbulb"></i>
+              <span>Resources</span>
+            </a>
+          </li>
+          <li>
+            <a href="community.html">
+              <i class="fas fa-users"></i>
+              <span>Community</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <a href="settings.html">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </a>
+        <a href="#" id="logout-button">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="content-header">
+        <h1>Dashboard</h1>
+        <div class="user-menu">
+          <div class="notification-icon">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">2</span>
+          </div>
+          <div class="user-profile" id="user-menu-trigger">
+            <img src="https://via.placeholder.com/40" alt="User Avatar">
+            <span class="user-name">John Doe</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="user-dropdown" id="user-dropdown">
+            <ul>
+              <li><a href="settings.html"><i class="fas fa-user"></i> Profile</a></li>
+              <li><a href="settings.html#preferences"><i class="fas fa-sliders-h"></i> Preferences</a></li>
+              <li><a href="#" id="theme-toggle"><i class="fas fa-moon"></i> Dark Mode</a></li>
+              <li class="divider"></li>
+              <li><a href="#" id="logout-dropdown"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      
+      <div class="content-wrapper">
+        <!-- Welcome Card -->
+        <section class="welcome-card">
+          <div class="welcome-text">
+            <h2>Welcome back, <span class="user-first-name">John</span>!</h2>
+            <p class="welcome-message">How are you feeling today?</p>
+          </div>
+          <div class="quick-mood-check">
+            <button class="mood-button" data-mood="great">
+              <i class="fas fa-grin-beam"></i>
+              <span>Great</span>
+            </button>
+            <button class="mood-button" data-mood="good">
+              <i class="fas fa-smile"></i>
+              <span>Good</span>
+            </button>
+            <button class="mood-button" data-mood="okay">
+              <i class="fas fa-meh"></i>
+              <span>Okay</span>
+            </button>
+            <button class="mood-button" data-mood="low">
+              <i class="fas fa-frown"></i>
+              <span>Low</span>
+            </button>
+            <button class="mood-button" data-mood="terrible">
+              <i class="fas fa-sad-tear"></i>
+              <span>Terrible</span>
+            </button>
+          </div>
+          <div class="quick-action-buttons">
+            <a href="mood-tracker.html" class="action-button">
+              <i class="fas fa-plus-circle"></i>
+              <span>Add Detailed Mood Entry</span>
+            </a>
+          </div>
+        </section>
+        
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+          <!-- Mood Trends Card -->
+          <div class="dashboard-card mood-trends">
+            <div class="card-header">
+              <h3>Mood Trends</h3>
+              <div class="card-actions">
+                <button class="time-filter active" data-period="week">Week</button>
+                <button class="time-filter" data-period="month">Month</button>
+                <button class="time-filter" data-period="year">Year</button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="chart-container">
+                <canvas id="mood-chart"></canvas>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="mood-tracker.html" class="card-link">View Full History</a>
+            </div>
+          </div>
+          
+          <!-- Recent Journal Card -->
+          <div class="dashboard-card recent-journal">
+            <div class="card-header">
+              <h3>Recent Journal Entries</h3>
+              <a href="journal.html" class="new-entry-button">
+                <i class="fas fa-plus"></i> New Entry
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="journal-entries-list">
+                <div class="journal-entry">
+                  <div class="entry-date">
+                    <span class="day">15</span>
+                    <span class="month">May</span>
+                  </div>
+                  <div class="entry-content">
+                    <h4>Productive day at work</h4>
+                    <p>Today was really productive. I managed to complete the project ahead of schedule and...</p>
+                  </div>
+                  <div class="entry-sentiment positive">
+                    <i class="fas fa-arrow-up"></i>
+                  </div>
+                </div>
+                
+                <div class="journal-entry">
+                  <div class="entry-date">
+                    <span class="day">12</span>
+                    <span class="month">May</span>
+                  </div>
+                  <div class="entry-content">
+                    <h4>Feeling overwhelmed</h4>
+                    <p>There's so much to do and I'm finding it hard to prioritize. The deadlines are coming up and...</p>
+                  </div>
+                  <div class="entry-sentiment negative">
+                    <i class="fas fa-arrow-down"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="journal.html" class="card-link">View All Entries</a>
+            </div>
+          </div>
+          
+          <!-- Recommended Resources Card -->
+          <div class="dashboard-card recommended-resources">
+            <div class="card-header">
+              <h3>Recommended Resources</h3>
+            </div>
+            <div class="card-body">
+              <div class="resources-list">
+                <div class="resource-item">
+                  <div class="resource-icon">
+                    <i class="fas fa-book"></i>
+                  </div>
+                  <div class="resource-details">
+                    <h4>Managing Work Stress</h4>
+                    <p>Practical techniques for managing workplace pressure and burnout.</p>
+                    <div class="resource-tags">
+                      <span class="tag">Stress</span>
+                      <span class="tag">Work</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="resource-item">
+                  <div class="resource-icon">
+                    <i class="fas fa-headphones"></i>
+                  </div>
+                  <div class="resource-details">
+                    <h4>Guided Meditation</h4>
+                    <p>10-minute guided meditation for calming anxiety and improving focus.</p>
+                    <div class="resource-tags">
+                      <span class="tag">Meditation</span>
+                      <span class="tag">Audio</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="resources.html" class="card-link">Explore All Resources</a>
+            </div>
+          </div>
+          
+          <!-- AI Assistant Card -->
+          <div class="dashboard-card ai-assistant">
+            <div class="card-header">
+              <h3>Mental Health Assistant</h3>
+            </div>
+            <div class="card-body">
+              <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                  <div class="message assistant">
+                    <div class="message-avatar">
+                      <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                      <p>Hello! I'm your personal mental health assistant. How can I help you today?</p>
+                    </div>
+                  </div>
+                  
+                  <div class="message user">
+                    <div class="message-content">
+                      <p>I'm feeling a bit stressed about work.</p>
+                    </div>
+                  </div>
+                  
+                  <div class="message assistant">
+                    <div class="message-avatar">
+                      <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                      <p>I'm sorry to hear that. Work stress can be challenging. Would you like some quick stress relief techniques, or would you prefer to talk more about what's causing your stress?</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="chat-input">
+                  <input type="text" id="user-message" placeholder="Type your message...">
+                  <button id="send-message">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/charts.js"></script>
+  <script>
+    // Initialize quick mood buttons
+    document.addEventListener('DOMContentLoaded', function() {
+      const moodButtons = document.querySelectorAll('.mood-button');
+      
+      moodButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const mood = this.getAttribute('data-mood');
+          const moodValue = {
+            'great': 5,
+            'good': 4,
+            'okay': 3,
+            'low': 2,
+            'terrible': 1
+          }[mood] || 3;
+          
+          // Save mood to storage
+          NungoApp.saveMoodData({
+            mood: mood,
+            moodValue: moodValue,
+            factors: [],
+            notes: 'Quick mood check from dashboard',
+            date: new Date().toISOString()
+          }).then(() => {
+            // Show notification
+            NungoApp.showNotification('Mood logged successfully!', 'success');
+            
+            // Highlight selected button
+            moodButtons.forEach(btn => btn.classList.remove('selected'));
+            this.classList.add('selected');
+            
+            // Remove selection after 2 seconds
+            setTimeout(() => {
+              this.classList.remove('selected');
+            }, 2000);
+          });
+        });
+      });
+    });
+  </script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

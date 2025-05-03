@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood Tracker | MentalMosaic</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation (same as dashboard.html) -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <img src="images/logo.png" alt="MentalMosaic">
+          <span>MentalMosaic</span>
+        </div>
+        <button class="mobile-toggle" id="sidebar-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="dashboard.html">
+              <i class="fas fa-home"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="active">
+            <a href="mood-tracker.html">
+              <i class="fas fa-chart-line"></i>
+              <span>Mood Tracker</span>
+            </a>
+          </li>
+          <li>
+            <a href="journal.html">
+              <i class="fas fa-book"></i>
+              <span>Journal</span>
+            </a>
+          </li>
+          <li>
+            <a href="resources.html">
+              <i class="fas fa-lightbulb"></i>
+              <span>Resources</span>
+            </a>
+          </li>
+          <li>
+            <a href="community.html">
+              <i class="fas fa-users"></i>
+              <span>Community</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <a href="settings.html">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </a>
+        <a href="#" id="logout-button">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="content-header">
+        <h1>Mood Tracker</h1>
+        <div class="user-menu">
+          <div class="notification-icon">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">2</span>
+          </div>
+          <div class="user-profile" id="user-menu-trigger">
+            <img src="https://via.placeholder.com/40" alt="User Avatar">
+            <span class="user-name">John Doe</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="user-dropdown" id="user-dropdown">
+            <ul>
+              <li><a href="settings.html"><i class="fas fa-user"></i> Profile</a></li>
+              <li><a href="settings.html#preferences"><i class="fas fa-sliders-h"></i> Preferences</a></li>
+              <li><a href="#" id="theme-toggle"><i class="fas fa-moon"></i> Dark Mode</a></li>
+              <li class="divider"></li>
+              <li><a href="#" id="logout-dropdown"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      
+      <div class="content-wrapper">
+        <!-- Tabs -->
+        <div class="tabs">
+          <button class="tab-button active" data-tab="log-mood">Log Mood</button>
+          <button class="tab-button" data-tab="history">History</button>
+          <button class="tab-button" data-tab="insights">Insights</button>
+        </div>
+        
+        <!-- Tab Content -->
+        <div class="tab-content">
+          <!-- Log Mood Tab -->
+          <div class="tab-pane active" id="log-mood">
+            <div class="mood-logging-container">
+              <h2>How are you feeling today?</h2>
+              <p class="tab-description">Track your mood to gain insights into your emotional patterns.</p>
+              
+              <div class="mood-selection-container">
+                <div class="mood-options">
+                  <div class="mood-option" data-value="5" data-mood="great">
+                    <div class="mood-icon">
+                      <i class="fas fa-grin-beam"></i>
+                    </div>
+                    <span class="mood-label">Great</span>
+                  </div>
+                  
+                  <div class="mood-option" data-value="4" data-mood="good">
+                    <div class="mood-icon">
+                      <i class="fas fa-smile"></i>
+                    </div>
+                    <span class="mood-label">Good</span>
+                  </div>
+                  
+                  <div class="mood-option" data-value="3" data-mood="okay">
+                    <div class="mood-icon">
+                      <i class="fas fa-meh"></i>
+                    </div>
+                    <span class="mood-label">Okay</span>
+                  </div>
+                  
+                  <div class="mood-option" data-value="2" data-mood="low">
+                    <div class="mood-icon">
+                      <i class="fas fa-frown"></i>
+                    </div>
+                    <span class="mood-label">Low</span>
+                  </div>
+                  
+                  <div class="mood-option" data-value="1" data-mood="terrible">
+                    <div class="mood-icon">
+                      <i class="fas fa-sad-tear"></i>
+                    </div>
+                    <span class="mood-label">Terrible</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mood-details-container">
+                <h3>What factors are influencing your mood?</h3>
+                <p class="section-description">Select all that apply.</p>
+                
+                <div class="factors-grid">
+                  <div class="factor-option" data-factor="work">
+                    <div class="factor-icon">
+                      <i class="fas fa-briefcase"></i>
+                    </div>
+                    <span class="factor-label">Work</span>
+                  </div>
+                  
+                  <div class="factor-option" data-factor="relationships">
+                    <div class="factor-icon">
+                      <i class="fas fa-heart"></i>
+                    </div>
+                    <span class="factor-label">Relationships</span>
+                  </div>
+                  
+                  <div class="factor-option" data-factor="health">
+                    <div class="factor-icon">
+                      <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <span class="factor-label">Health</span>
+                  </div>
+                  
+                  <div class="factor-option" data-factor="sleep">
+                    <div class="factor-icon">
+                      <i class="fas fa-bed"></i>
+                    </div>
+                    <span class="factor-label">Sleep</span>
+                  </div>
+                  
+                  <div class="factor-option" data-factor="exercise">
+                    <div class="factor-icon">
+                      <i class="fas fa-running"></i>
+                    </div>
+                    <span class="factor-label">Exercise</span>
+                  </div>
+                  
+                  <div class="factor-option" data-factor="nutrition">
+                    <div class="factor-icon">
+                      <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <span class="factor-label">Nutrition</span>
+                  </div>
+                  
+                  <div class="factor-option" data-factor="finances">
+                    <div class="factor-icon">
+                      <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <span class="factor-label">Finances</span>
+                  </div>
+                  
+                  <div class="factor-option" data-factor="weather">
+                    <div class="factor-icon">
+                      <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <span class="factor-label">Weather</span>
+                  </div>
+                </div>
+                
+                <div class="notes-section">
+                  <h3>Notes</h3>
+                  <p class="section-description">Add any additional thoughts about your mood.</p>
+                  <textarea id="mood-notes" placeholder="How was your day? Any specific events that affected your mood?"></textarea>
+                </div>
+                
+                <div class="submit-section">
+                  <button id="save-mood" class="primary-button">Save Mood Entry</button>
+                </div>
+              </div>
+              
+              <div class="mood-saved-container" style="display: none;">
+                <div class="success-animation">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Your mood has been logged!</h2>
+                <p>Thank you for checking in. Based on your mood, here are some recommendations:</p>
+                
+                <div class="recommendations">
+                  <!-- Recommendations will be dynamically populated -->
+                </div>
+                
+                <div class="action-buttons">
+                  <button id="view-insights" class="secondary-button">View Insights</button>
+                  <button id="log-another" class="primary-button">Log Another Entry</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- History Tab -->
+          <div class="tab-pane" id="history">
+            <div class="mood-history-container">
+              <h2>Your Mood History</h2>
+              <p class="tab-description">Review your past mood entries and identify patterns.</p>
+              
+              <div class="history-filters">
+                <div class="date-range">
+                  <label for="date-filter">Time Period:</label>
+                  <select id="date-filter">
+                    <option value="week">Past Week</option>
+                    <option value="month" selected>Past Month</option>
+                    <option value="3months">Past 3 Months</option>
+                    <option value="year">Past Year</option>
+                    <option value="all">All Time</option>
+                  </select>
+                </div>
+                
+                <div class="mood-filter">
+                  <label for="mood-filter">Mood Type:</label>
+                  <select id="mood-filter">
+                    <option value="all" selected>All Moods</option>
+                    <option value="positive">Positive Only</option>
+                    <option value="negative">Negative Only</option>
+                  </select>
+                </div>
+                
+                <div class="factor-filter">
+                  <label for="factor-filter">Factor:</label>
+                  <select id="factor-filter">
+                    <option value="all" selected>All Factors</option>
+                    <option value="work">Work</option>
+                    <option value="relationships">Relationships</option>
+                    <option value="health">Health</option>
+                    <option value="sleep">Sleep</option>
+                    <option value="exercise">Exercise</option>
+                    <option value="nutrition">Nutrition</option>
+                    <option value="finances">Finances</option>
+                    <option value="weather">Weather</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="mood-chart-container">
+                <canvas id="mood-history-chart"></canvas>
+              </div>
+              
+              <div class="mood-entries-list">
+                <h3>Mood Entries</h3>
+                <!-- Mood entries will be loaded dynamically -->
+              </div>
+              
+              <div class="pagination">
+                <button class="pagination-button prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="pagination-numbers">
+                  <button class="pagination-number active">1</button>
+                  <button class="pagination-number">2</button>
+                  <button class="pagination-number">3</button>
+                </div>
+                <button class="pagination-button next"><i class="fas fa-chevron-right"></i></button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Insights Tab -->
+          <div class="tab-pane" id="insights">
+            <div class="mood-insights-container">
+              <h2>Your Mood Insights</h2>
+              <p class="tab-description">Discover patterns and correlations in your mood data.</p>
+              
+              <div class="insight-cards">
+                <div class="insight-card">
+                  <div class="insight-icon">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div class="insight-content">
+                    <h3>Mood Trends</h3>
+                    <p>Your overall mood has been improving over the past month, with more positive days recorded.</p>
+                    <div class="insight-chart">
+                      <canvas id="trend-chart"></canvas>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="insight-card">
+                  <div class="insight-icon">
+                    <i class="fas fa-brain"></i>
+                  </div>
+                  <div class="insight-content">
+                    <h3>Key Factors</h3>
+                    <p>Your mood seems most positively influenced by <strong>exercise</strong> and negatively impacted by <strong>poor sleep</strong>.</p>
+                    <div class="insight-chart">
+                      <canvas id="factors-impact-chart"></canvas>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="insight-card">
+                  <div class="insight-icon">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <div class="insight-content">
+                    <h3>Time Patterns</h3>
+                    <p>You tend to have higher moods on weekends and lower moods on Mondays and Wednesdays.</p>
+                    <div class="insight-chart">
+                      <canvas id="weekly-pattern-chart"></canvas>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="insight-card">
+                  <div class="insight-icon">
+                    <i class="fas fa-lightbulb"></i>
+                  </div>
+                  <div class="insight-content">
+                    <h3>AI-Powered Suggestions</h3>
+                    <ul class="suggestions-list">
+                      <li><i class="fas fa-check-circle"></i> Consider incorporating regular exercise into your routine, especially on Mondays</li>
+                      <li><i class="fas fa-check-circle"></i> Work on improving your sleep quality by maintaining a consistent bedtime</li>
+                      <li><i class="fas fa-check-circle"></i> Practice mindfulness techniques when work stress is high</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="correlation-section">
+                <h3>Factor Correlations</h3>
+                <p>See how different factors correlate with your mood.</p>
+                
+                <div class="correlation-matrix">
+                  <canvas id="correlation-chart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/mood-tracker.js"></script>
+  <script src="js/charts.js"></script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal | Nungo Builds Calm</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation (same as other pages) -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <img src="images/logo.png" alt="Nungo Builds Calm">
+          <span>Nungo Builds Calm</span>
+        </div>
+        <button class="mobile-toggle" id="sidebar-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="dashboard.html">
+              <i class="fas fa-home"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="mood-tracker.html">
+              <i class="fas fa-chart-line"></i>
+              <span>Mood Tracker</span>
+            </a>
+          </li>
+          <li class="active">
+            <a href="journal.html">
+              <i class="fas fa-book"></i>
+              <span>Journal</span>
+            </a>
+          </li>
+          <li>
+            <a href="resources.html">
+              <i class="fas fa-lightbulb"></i>
+              <span>Resources</span>
+            </a>
+          </li>
+          <li>
+            <a href="community.html">
+              <i class="fas fa-users"></i>
+              <span>Community</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <a href="settings.html">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </a>
+        <a href="#" id="logout-button">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="content-header">
+        <h1>Journal</h1>
+        <div class="user-menu">
+          <div class="notification-icon">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">2</span>
+          </div>
+          <div class="user-profile" id="user-menu-trigger">
+            <img src="https://via.placeholder.com/40" alt="User Avatar">
+            <span class="user-name">John Doe</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="user-dropdown" id="user-dropdown">
+            <ul>
+              <li><a href="settings.html"><i class="fas fa-user"></i> Profile</a></li>
+              <li><a href="settings.html#preferences"><i class="fas fa-sliders-h"></i> Preferences</a></li>
+              <li><a href="#" id="theme-toggle"><i class="fas fa-moon"></i> Dark Mode</a></li>
+              <li class="divider"></li>
+              <li><a href="#" id="logout-dropdown"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      
+      <div class="content-wrapper">
+        <div class="journal-container">
+          <!-- Journal Header with Actions -->
+          <div class="journal-header">
+            <div class="journal-actions">
+              <button id="new-entry-button" class="primary-button">
+                <i class="fas fa-plus"></i> New Entry
+              </button>
+              <div class="journal-view-options">
+                <button class="view-option active" data-view="grid">
+                  <i class="fas fa-th-large"></i>
+                </button>
+                <button class="view-option" data-view="list">
+                  <i class="fas fa-list"></i>
+                </button>
+              </div>
+            </div>
+            <div class="journal-search">
+              <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search journal entries..." id="journal-search-input">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Journal Content - Split View -->
+          <div class="journal-content">
+            <div class="journal-entries-panel">
+              <div class="panel-header">
+                <h2>Your Entries</h2>
+                <div class="entries-filter">
+                  <select id="entries-filter">
+                    <option value="recent">Most Recent</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="positive">Positive Sentiment</option>
+                    <option value="negative">Negative Sentiment</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="entries-list">
+                <div class="journal-entry-item active" data-id="entry1">
+                  <div class="entry-date">
+                    <span class="day">3</span>
+                    <span class="month">May</span>
+                    <span class="year">2025</span>
+                  </div>
+                  <div class="entry-preview">
+                    <h3>Finding balance in a hectic week</h3>
+                    <p>This week has been incredibly busy with the new project launch, but I managed to find some time for self-care...</p>
+                  </div>
+                  <div class="entry-sentiment positive">
+                    <i class="fas fa-arrow-up"></i>
+                  </div>
+                </div>
+                
+                <div class="journal-entry-item" data-id="entry2">
+                  <div class="entry-date">
+                    <span class="day">1</span>
+                    <span class="month">May</span>
+                    <span class="year">2025</span>
+                  </div>
+                  <div class="entry-preview">
+                    <h3>Feeling overwhelmed with deadlines</h3>
+                    <p>The pressure is mounting as several deadlines approach. I'm struggling to prioritize tasks and finding myself...</p>
+                  </div>
+                  <div class="entry-sentiment negative">
+                    <i class="fas fa-arrow-down"></i>
+                  </div>
+                </div>
+                
+                <div class="journal-entry-item" data-id="entry3">
+                  <div class="entry-date">
+                    <span class="day">28</span>
+                    <span class="month">Apr</span>
+                    <span class="year">2025</span>
+                  </div>
+                  <div class="entry-preview">
+                    <h3>Weekend reflection</h3>
+                    <p>Spent the weekend hiking and disconnecting from technology. It's amazing how much a break from screens can...</p>
+                  </div>
+                  <div class="entry-sentiment positive">
+                    <i class="fas fa-arrow-up"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="journal-detail-panel">
+              <div class="entry-detail" id="entry1-detail">
+                <div class="entry-detail-header">
+                  <h2>Finding balance in a hectic week</h2>
+                  <div class="entry-meta">
+                    <span class="entry-timestamp">May 3, 2025 • 10:24 AM</span>
+                    <div class="entry-actions">
+                      <button class="entry-action-button" title="Edit">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button class="entry-action-button" title="Delete">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="entry-detail-content">
+                  <p>This week has been incredibly busy with the new project launch, but I managed to find some time for self-care by waking up 30 minutes earlier each day to meditate.</p>
+                  
+                  <p>The extra time in the morning has really helped me center myself before diving into the chaos of work. I've noticed that I'm more patient with my team and better at prioritizing what truly matters.</p>
+                  
+                  <p>One challenge I'm still facing is disconnecting in the evenings. I find myself checking emails before bed, which affects my sleep quality. Tomorrow I'm going to try keeping my phone in another room when I go to bed.</p>
+                </div>
+                
+                <div class="entry-ai-feedback">
+                  <div class="ai-feedback-header">
+                    <h3><i class="fas fa-robot"></i> AI Insights</h3>
+                  </div>
+                  <div class="ai-feedback-content">
+                    <p>It's great that you've found a morning routine that works for you! The meditation practice you've started is a powerful tool for stress management.</p>
+                    
+                    <p>I notice you've mentioned challenges with disconnecting in the evenings. Creating a "digital sunset" routine where you stop using screens 1-2 hours before bed could help improve your sleep quality. Your idea of keeping your phone in another room is an excellent start!</p>
+                    
+                    <p>Overall, your entry shows a positive approach to balancing work demands with self-care, which is crucial for preventing burnout.</p>
+                  </div>
+                </div>
+                
+                <div class="entry-related">
+                  <h3>Related Resources</h3>
+                  <div class="related-resources">
+                    <a href="#" class="related-resource">
+                      <i class="fas fa-link"></i>
+                      <span>Guide to Digital Boundaries for Better Sleep</span>
+                    </a>
+                    <a href="#" class="related-resource">
+                      <i class="fas fa-link"></i>
+                      <span>5-Minute Evening Meditation for Work-Life Balance</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- New Entry Modal -->
+      <div class="modal" id="new-entry-modal">
+        <div class="modal-content journal-modal">
+          <div class="modal-header">
+            <h2>New Journal Entry</h2>
+            <button class="close-modal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          
+          <div class="modal-body">
+            <div class="journal-form">
+              <div class="form-group">
+                <label for="entry-title">Title</label>
+                <input type="text" id="entry-title" placeholder="Give your entry a title...">
+              </div>
+              
+              <div class="form-group">
+                <label for="entry-content">What's on your mind today?</label>
+                <div class="entry-prompts">
+                  <button class="prompt-button" data-prompt="gratitude">Gratitude</button>
+                  <button class="prompt-button" data-prompt="challenge">Challenge</button>
+                  <button class="prompt-button" data-prompt="reflection">Reflection</button>
+                  <button class="prompt-button" data-prompt="growth">Growth</button>
+                </div>
+                <textarea id="entry-content" placeholder="Start writing here..."></textarea>
+              </div>
+              
+              <div class="form-group ai-assistant-toggle">
+                <div class="toggle-label">
+                  <i class="fas fa-robot"></i>
+                  <span>AI Assistant</span>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="ai-toggle" checked>
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              <div class="ai-assistant-info">
+                <p>The AI assistant will analyze your entry to provide emotional insights and helpful resources.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="modal-footer">
+            <button class="secondary-button cancel-modal">Cancel</button>
+            <button class="primary-button" id="save-entry-button">Save Entry</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Delete Confirmation Modal -->
+      <div class="modal" id="delete-confirmation-modal">
+        <div class="modal-content confirmation-modal">
+          <div class="modal-header">
+            <h2>Delete Entry</h2>
+            <button class="close-modal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          
+          <div class="modal-body">
+            <p>Are you sure you want to delete this journal entry? This action cannot be undone.</p>
+          </div>
+          
+          <div class="modal-footer">
+            <button class="secondary-button cancel-modal">Cancel</button>
+            <button class="danger-button" id="confirm-delete">Delete</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/journal.js"></script>
+  <script src="js/azure-copilot.js"></script>
+</body>
+</html>
